@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Red Barber Shop, Wimborne Road – demo site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#B3201F;
+    --red-deep:#8A1716;
+    --paper:#FBF4F1;   /* faint pink-white, like a tiled shop wall */
+    --tile:#F1E1DC;
+    --ink:#2A1514;     /* warm brown-black */
+    --soft:#7A5B58;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  body{font-family:"Work Sans",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:1.0625rem}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .red :focus-visible{outline-color:#fff}
+  .wrap{max-width:66rem;margin:0 auto;padding:0 1.25rem}
+  .slab{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.005em}
+
+  .demo{background:var(--ink);color:var(--paper);font-size:.8125rem;text-align:center;padding:.4rem 1rem}
+
+  /* hero: the name is the sign */
+  .hero{background:var(--red);color:#fff}
+  .hero .wrap{padding-top:2.5rem;padding-bottom:3rem}
+  .sign{font-size:clamp(7rem,34vw,22rem);line-height:.8;margin-left:-.04em}
+  .sign-sub{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 2rem;border-top:3px solid #fff;margin-top:1.25rem;padding-top:.9rem}
+  .sign-sub .slab{font-size:clamp(1.5rem,4.5vw,2.5rem);line-height:1.1}
+  .sign-sub .where{font-weight:600;font-size:1.0625rem}
+  .hero-body{display:grid;gap:1.5rem;margin-top:2.25rem}
+  @media(min-width:760px){.hero-body{grid-template-columns:1.3fr 1fr;align-items:end}}
+  .hero-body p{font-size:1.1875rem;max-width:30rem}
+  .now{font-weight:700;font-size:1.125rem}
+  .now span{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:#fff;margin-right:.5rem;vertical-align:.05em}
+  .now.closed span{background:transparent;border:2px solid #fff}
+  .actions{display:flex;flex-wrap:wrap;gap:.75rem}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;padding:.85rem 1.4rem;border-radius:999px}
+  .btn-white{background:#fff;color:var(--red-deep)}
+  .btn-white:hover{background:var(--tile)}
+  .btn-line{border:2px solid #fff;color:#fff}
+  .btn-line:hover{background:var(--red-deep)}
+
+  section{padding:4.5rem 0}
+  h2{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;font-size:clamp(2.25rem,6vw,3.5rem);line-height:1;color:var(--red);margin-bottom:.75rem}
+  .intro{color:var(--soft);max-width:34rem;margin-bottom:2.25rem}
+
+  /* services: big simple list, prices to be filled in */
+  .menu{list-style:none;border-top:2px solid var(--ink)}
+  .menu li{display:grid;grid-template-columns:1fr auto;gap:.25rem 1rem;padding:1.1rem 0;border-bottom:1px solid #dcc6c0}
+  .menu .what{font-weight:700;font-size:1.25rem}
+  .menu .detail{grid-column:1;color:var(--soft);font-size:.95rem}
+  .menu .cost{grid-row:1/span 2;grid-column:2;align-self:center;font-family:"Alfa Slab One",Georgia,serif;font-size:1.75rem;color:var(--red)}
+  .split{display:grid;gap:2.5rem}
+  @media(min-width:820px){.split{grid-template-columns:1fr 1.4fr;gap:4rem}}
+
+  /* week strip */
+  .week{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem}
+  .day{background:var(--tile);border-radius:.6rem;padding:.9rem .4rem;text-align:center}
+  .day b{display:block;font-family:"Alfa Slab One",Georgia,serif;font-weight:400;font-size:1.125rem;margin-bottom:.35rem}
+  .day small{display:block;font-size:.8125rem;line-height:1.3;font-variant-numeric:tabular-nums}
+  .day.today{background:var(--red);color:#fff}
+  @media(max-width:560px){
+    .week{grid-template-columns:1fr}
+    .day{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:.75rem 1rem}
+    .day b{margin:0}
+    .day small{font-size:.95rem}
+  }
+  .hours-note{margin-top:1.25rem;color:var(--soft)}
+
+  .visit{background:var(--tile)}
+  .visit address{font-style:normal;font-size:1.5rem;font-weight:700;line-height:1.35;margin-bottom:1.25rem}
+  .visit .btn-red{background:var(--red);color:#fff}
+  .visit .btn-red:hover{background:var(--red-deep)}
+  .call{font-family:"Alfa Slab One",Georgia,serif;font-size:clamp(2rem,6vw,2.75rem);color:var(--red);text-decoration:none}
+
+  footer{background:var(--red-deep);color:#f3d7d2;font-size:.875rem;padding:1.5rem 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem}
+</style>
+</head>
+<body>
+<div class="demo">Demo preview made for Red Barber Shop. Prices and phone number are placeholders.</div>
+
+<header class="hero red">
+  <div class="wrap">
+    <div class="sign slab" aria-label="Red">Red</div>
+    <div class="sign-sub">
+      <span class="slab">Barber Shop</span>
+      <span class="where">743 Wimborne Road, Moordown</span>
+    </div>
+    <div class="hero-body">
+      <div>
+        <p>Haircuts, beard trims and hot towel shaves, seven days a week. Come in, or call ahead and we'll fit you in.</p>
+        <p class="now" id="now" role="status" style="margin-top:1rem"><span></span><em id="nowText" style="font-style:normal">Checking hours…</em></p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-white" href="tel:+440000000000">Call to book</a>
+        <a class="btn btn-line" href="#visit">Find the shop</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>What we do</h2>
+        <p class="intro">Straightforward men's barbering. Ask in the shop if you want something that isn't on the list.</p>
+      </div>
+      <ul class="menu">
+        <li><span class="what">Men's haircut</span><span class="detail">Clipper or scissors, fades included</span><span class="cost">£16</span></li>
+        <li><span class="what">Beard trim</span><span class="detail">Shaped and lined up</span><span class="cost">£8</span></li>
+        <li><span class="what">Hot towel shave</span><span class="detail">Traditional cut-throat shave</span><span class="cost">£15</span></li>
+        <li><span class="what">Head shave</span><span class="detail">Smooth all over</span><span class="cost">£14</span></li>
+        <li><span class="what">Cut and beard</span><span class="detail">Both together</span><span class="cost">£22</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2>Open seven days</h2>
+      <p class="intro">Including Sunday mornings.</p>
+      <div class="week" id="week"></div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap split">
+      <div>
+        <h2>Visit</h2>
+        <address>Red Barber Shop<br>743 Wimborne Road<br>Moordown, Bournemouth<br>BH9 2BA</address>
+        <a class="btn btn-red" href="https://www.google.com/maps/search/?api=1&query=Red+Barber+Shop+743+Wimborne+Road+Bournemouth+BH9+2BA">Open in Google Maps</a>
+      </div>
+      <div>
+        <p class="intro" style="margin-bottom:.25rem">To book or ask a question, call the shop.</p>
+        <a class="call" href="tel:+440000000000">01202 000 000</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Red Barber Shop, Moordown</span>
+    <span>Site by Andy Alexander</span>
+  </div>
+</footer>
+
+<script>
+  // Index 0 = Sunday. [open, close] in 24h.
+  const HOURS=[[9.5,15.5],[9,18],[9,18],[9,18],[9,18],[9,18],[9,18]];
+  const SHORT=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const LONG=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const fmt=h=>{const hr=Math.floor(h),m=Math.round((h-hr)*60),s=hr>12?hr-12:hr;return s+(m?":"+String(m).padStart(2,"0"):"")+(hr>=12?"pm":"am")};
+  let uk;try{uk=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/London"}))}catch(e){uk=new Date()}
+  const today=uk.getDay(),t=uk.getHours()+uk.getMinutes()/60;
+
+  const week=document.getElementById("week");
+  [1,2,3,4,5,6,0].forEach(d=>{
+    const el=document.createElement("div");el.className="day"+(d===today?" today":"");
+    el.innerHTML="<b>"+SHORT[d]+"</b><small>"+fmt(HOURS[d][0])+" – "+fmt(HOURS[d][1])+"</small>";
+    el.setAttribute("aria-label",LONG[d]+(d===today?" (today)":"")+": "+fmt(HOURS[d][0])+" to "+fmt(HOURS[d][1]));
+    week.appendChild(el);
+  });
+
+  const now=document.getElementById("now"),txt=document.getElementById("nowText"),h=HOURS[today];
+  if(t>=h[0]&&t<h[1]){txt.textContent="Open now until "+fmt(h[1])}
+  else{
+    now.classList.add("closed");
+    const tomorrow=(today+1)%7;
+    txt.textContent=t<h[0]?"Closed, opens today at "+fmt(h[0]):"Closed, opens tomorrow at "+fmt(HOURS[tomorrow][0]);
+  }
+</script>
+</body>
+</html>
